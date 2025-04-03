@@ -1,30 +1,30 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import {
-    HarmCategory,
-    HarmBlockThreshold,
-    VertexAI,
-  } from "@google-cloud/vertexai";
+// import dotenv from 'dotenv';
+// dotenv.config();
+// import {
+//     HarmCategory,
+//     HarmBlockThreshold,
+//     VertexAI,
+//   } from "@google-cloud/vertexai";
 
-const vertex = new VertexAI({
-  project: process.env.VERTEXAI_PROJECT_ID,
-  location: process.env.VERTEXAI_LOCATION,
-});
-const model = process.env.VERTEXAI_MODEL_ID;
-const llm = vertex.getGenerativeModel({
-  model,
-  generationConfig: {
-    maxOutputTokens: 1000,
-    temperature: 1,
-    topP: 0.9,
-  }});
-
-// import { ChatVertexAI } from "@langchain/google-vertexai";
-
-// const llm = new ChatVertexAI({
-//   model: "gemini-2.0-flash",
-//   temperature: 0
+// const vertex = new VertexAI({
+//   project: process.env.VERTEXAI_PROJECT_ID,
+//   location: process.env.VERTEXAI_LOCATION,
 // });
+// const model = process.env.VERTEXAI_MODEL_ID;
+// const llm = vertex.getGenerativeModel({
+//   model,
+//   generationConfig: {
+//     maxOutputTokens: 1000,
+//     temperature: 1,
+//     topP: 0.9,
+//   }});
+
+import { ChatVertexAI } from "@langchain/google-vertexai";
+
+const llm = new ChatVertexAI({
+  model: "gemini-2.0-flash",
+  temperature: 0
+});
 
 import { VertexAIEmbeddings } from "@langchain/google-vertexai";
 
